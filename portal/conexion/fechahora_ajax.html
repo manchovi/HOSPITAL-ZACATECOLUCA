@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tutorial ajax</title>
+	<!--<meta charset="UTF-8">-->
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+	<!--<script type="text/javascript" src="../jquery-2.1.1.js"></script>-->
+	<!--<link rel="stylesheet" href="bootstrap.min.css"> -->	
+	<script type="text/javascript">
+		function mostrar(){
+			$.ajax({
+				//type:"GET",
+				url:"conexion/datofechahorajax.php",
+				dataType: 'html',
+				success:function(d){
+					$("#fh").html(d);
+					$("#fh1").html(d);
+					$("#tiempo").html(d);
+					$("#f1").html(d);
+					$("#f2").html(d);
+					$("#f3").html(d);
+					$("#f4").html(d);
+					$("#f5").html(d);
+					$("#f6").html(d);
+					$("#f7").html(d);
+					$("#f8").html(d);
+				}
+			});
+		}
+		setInterval(mostrar,1000);
+	</script>
+</head>
+
+<body>
+	<!-- Carga de info-->
+	
+	<!--<div id="fh"></div>--> 
+	
+	<!--<div style="color: blue;background-color:lightblue;heigth=100%;" id="tempe"></div> -->
+</body>
+</html>

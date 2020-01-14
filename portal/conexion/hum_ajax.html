@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tutorial ajax</title>
+	<!-- <script type="text/javascript" src="jquery-2.1.1.js"></script>
+	<link rel="stylesheet" href="bootstrap.min.css"> -->	
+	<script type="text/javascript">
+		function mostrar(){
+			$.ajax({
+				//type:"GET",
+				url:"conexion/datohumedadajax.php",
+				dataType: 'html',
+				success:function(d){
+					$("#hume").html(d);
+				}
+			});
+		}
+		setInterval(mostrar,1000);
+	</script>
+</head>
+
+<body>
+	<!-- Carga de info-->
+	
+	<!--<div id="hume" class="full-box"></div> -->
+</body>
+</html>
