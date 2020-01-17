@@ -53,7 +53,6 @@
 
 
             <?php //include("conexion/foc2_ajax1.php");
-
 			//include("conexion/lectura_sensores.php");  //Eso 1
 		    ?>
 
@@ -169,6 +168,27 @@
                                             contentType: "application/json; charset=utf-8",
                                             method: "GET",
                                             success:function(data){
+                                                //var datos = JSON.parse(data)
+                                                var tempe = [];
+                                                var fecha = [];
+                                                for(var i=0;i<data.length;i++){
+                                                //for (var i in data) {
+                                                        tempe.push(data[i].temp_corporal);
+                                                        fecha.push(data[i].fecha);
+                                                    }
+
+                                                //console.log(data[5].y);
+                                                //console.log(data[data.length-1].y);
+                                                var t_gc = data[data.length-1].y;
+                                                var t_gf = (Number(t_gc * 1.8)+32.0).toFixed(2);
+                                                $("#tc_gc").html(t_gc);
+                                                console.log("Tempe C: "+t_gc);
+                                                $("#tc_gf").html(t_gf);
+                                                console.log("Tempe F: "+t_gf);
+                                            
+                                                //console.log(data.length);
+                                                //console.log(data);
+
                                                 var chart = new CanvasJS.Chart("chartContainer", {
                                                 theme: "light1",                   // "light2", "dark1", "dark2"
                                                 animationEnabled: false,          // change to true		
