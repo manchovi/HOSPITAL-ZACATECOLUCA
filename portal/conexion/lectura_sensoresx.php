@@ -36,32 +36,32 @@
 					$("#fh_tiempo").html(fecha + '~' +hora);
 
 					$("#spo2").html(sp);
-					$("#spo2_1").html(sp);
+					//$("#spo2_1").html(sp);
 					$("#fh_spo2").html(fecha + '~' +hora);
 					$("#fc").html(fc);
-					$("#fc_1").html(fc);
+					//$("#fc_1").html(fc);
 					$("#fh_fc").html(fecha + '~' +hora);
 					$("#diastolic").html(dc);
-					$("#diastolic_1").html(dc);
+					//$("#diastolic_1").html(dc);
 					$("#fh_diastolic").html(fecha + '~' +hora);
 					$("#systolic").html(sc);
-					$("#systolic_1").html(sc);
+					//$("#systolic_1").html(sc);
 					$("#fh_systolic").html(fecha + '~' +hora);
 					$("#heart").html(pm);
-					$("#heart_1").html(pm);
+					//$("#heart_1").html(pm);
 					$("#fh_heart").html(fecha + '~' +hora);
 					$("#temperatura").html(tc);
-					$("#temperatura_1").html(tc);
+					//$("#temperatura_1").html(tc);
 					$("#fh_temperatura").html(fecha + '~' +hora);
 					$("#temperatura1").html((Number(tc * 1.8)+32.0).toFixed(2));
-					$("#temperatura1_2").html((Number(tc * 1.8)+32.0).toFixed(2));
+					//$("#temperatura1_2").html((Number(tc * 1.8)+32.0).toFixed(2));
 					$("#fh_temperatura1").html(fecha + '~' +hora);
 					$("#respira").html(fr);
-					$("#respira_1").html(fr);
+					//$("#respira_1").html(fr);
 					$("#fh_respira").html(fecha + '~' +hora);
-					$("#fh_my").html(fecha + '~' +hora);
+					//$("#fh_my").html(fecha + '~' +hora);
 
-					$("#alarmm").html(alarma);
+					//$("#alarmm").html(alarma);
 
 					if(sp>=32){
 						$("#spo2_ico").html("<img src=\"assets/img/9.png\" height=\"110\" width=\"110\" />");

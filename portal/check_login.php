@@ -19,7 +19,8 @@ session_start();
     if(isset($_POST["email"]) && ($_POST["password"])){ 
         $email = $_POST['email']; 
         $password = $_POST['password'];
-        $result = mysqli_query($conn, "SELECT email, password, nombres, apellidos FROM tb_especialista WHERE email = '$email'");
+        //$result = mysqli_query($conn, "SELECT email, password, nombres, apellidos FROM tb_especialista WHERE email = '$email'");
+        $result = mysqli_query($conn, "SELECT dui, nombres, apellidos, email, password, direccion, telefono FROM tb_especialista WHERE email = '$email'");
         $row = mysqli_fetch_assoc($result);
         $hash = $row['password'];
         
@@ -28,8 +29,14 @@ session_start();
             $_SESSION['loggedin'] = true;
             $_SESSION['user'] = $row['nombres'] . " " . $row['apellidos'];
             $_SESSION['start'] = time();
-            $_SESSION['expire'] = $_SESSION['start'] + (5 * 60) ;						
-            
+            $_SESSION['expire'] = $_SESSION['start'] + (5 * 60) ;
+            $_SESSION['dui'] = $row['dui'];	
+            $_SESSION['nombres'] = $row['nombres'];			
+            $_SESSION['apellidos'] = $row['apellidos'];	
+            $_SESSION['email'] = $row['email'];	
+            $_SESSION['direccion'] = $row['direccion'];		
+            $_SESSION['telefono'] = $row['telefono'];
+
             /* echo "<br><br><div class='alert alert-success' role='alert'><strong><h2>Bienvenido!</strong> $row[user]</h2>			
                     <p><br><a href='mostrar1.php'>Consultar Datos</a></p>
             <p><a href='logout.php'>Cerrar Sesión</a></p></div>";	 */

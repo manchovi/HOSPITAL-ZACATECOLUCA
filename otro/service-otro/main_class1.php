@@ -287,14 +287,14 @@ class Mantenimiento{
     
     
     //NUEVA FUNCIÓN PARA REGISTRAR LOS CELULARES QUE TRATARÓN O HICIERÓN ACCIONES DE CONTROL Y MONITOREO EN EL SISTEMA ELECTRÓNICO.
-    public static function save($descripcion, $frec_cardiaca, $spo2, $diastolic, $systolic, $pulsemin, $frec_respiratoria, $temp_corporal, $alarma, $fecha, $hora, $responsable_especialista){
+    public static function registroPhones($descripcion, $celular1, $celular2, $fecha, $hora){
         include("connection_db.php");
-        $query = "INSERT INTO  tb_sensores (descripcion, frec_cardiaca, spo2, ta_diastolic, ta_systolic, ta_pulse_min, frec_respiratoria, temp_corporal, alarma, fecha, hora, dui)
-                                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO App_phone (descripcion, numCelularCircuito, numCelularResponsable, fecha, hora)
+                                VALUES (?, ?, ?, ?, ?)";
         try {    
           $link=conexion();    
           $comando = $link->prepare($query);
-          $comando->execute(array($descripcion, $frec_cardiaca, $spo2, $diastolic, $systolic, $pulsemin, $frec_respiratoria, $temp_corporal, $alarma, $fecha, $hora, $responsable_especialista));
+          $comando->execute(array($descripcion, $celular1, $celular2, $fecha, $hora));
           //return $comando;
           
           $count = $comando->rowCount();

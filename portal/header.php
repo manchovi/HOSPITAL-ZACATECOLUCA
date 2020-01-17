@@ -1,5 +1,5 @@
 <?php
-session_start();
+ @session_start();
 ?>
 
 <!-- SideBar -->
@@ -33,22 +33,38 @@ session_start();
 			<ul class="list-unstyled full-box dashboard-sideBar-Menu">
 				<li>
 					<a href="home.php">
-						<i class="zmdi zmdi-view-dashboard zmdi-hc-fw"></i> DASHBOARD # 1
-					</a>
-				</li>
-
-				<li>
-					<a href="home1.php">
-						<i class="zmdi zmdi-view-dashboard zmdi-hc-fw"></i> DASHBOARD # 2
+						<!-- <i class="zmdi zmdi-view-dashboard zmdi-hc-fw"></i> HOME -->
+						<!-- <i class="material-icons">more_vert</i> HOME -->
+						<i class="material-icons"> home</i> HOME
 					</a>
 				</li>
 
 				<li>
 					<a href="#!" class="btn-sideBar-SubMenu">
-					<i class="zmdi zmdi-case zmdi-hc-fw"></i> GRÁFICAS [°C ~ RH%] <i class="zmdi zmdi-caret-down pull-right"></i>
+					<i class="material-icons">dashboard</i> DASHBOARD BIOMÉTRICOS <i class="zmdi zmdi-caret-down pull-right"></i>
 					</a>
 					<ul class="list-unstyled full-box">
-						<li>
+
+					<li>
+					<a href="home.php">
+						<i class="zmdi zmdi-view-dashboard zmdi-hc-fw"></i> DASHBOARD # 1: SRT-GRAPH
+					</a>
+					</li>
+
+					<li>
+						<a href="home1.php">
+							<i class="zmdi zmdi-view-dashboard zmdi-hc-fw"></i> DASHBOARD # 2: RT
+						</a>
+					</li>
+
+					<li>
+						<a href="home2.php">
+							<i class="zmdi zmdi-view-dashboard zmdi-hc-fw"></i> DASHBOARD # 3: RT-GRAPH
+						</a>
+					</li>
+
+
+						<!-- <li>
 							<a href="graficalinea.php"><i class="zmdi zmdi-timer zmdi-hc-fw"></i> Gráfica Líneas [°C y RH %]</a>
 						</li>
 						<li>
@@ -56,46 +72,46 @@ session_start();
 						</li>
 						<li>
 							<a href="graficabarrasanual.php"><i class="zmdi zmdi-timer zmdi-hc-fw"></i> Estadística Mensual [°C y RH %]</a>
-						</li>
+						</li> -->
 					</ul>
 				</li>
 				<li>
 					<a href="#!" class="btn-sideBar-SubMenu">
-						<i class="zmdi zmdi-account-add zmdi-hc-fw"></i> CONSULTAS<i class="zmdi zmdi-caret-down pull-right"></i>
+						<i class="material-icons">search</i> CONSULTAS<i class="zmdi zmdi-caret-down pull-right"></i>
 					</a>
 					<ul class="list-unstyled full-box">
 						<li>
-							<a href="./consulta1.php"><i class="zmdi zmdi-timer zmdi-hc-fw"></i> Vista General</a>
+							<a href="./consulta1.php"><i class="material-icons">pageview</i> Vista General</a>
 						</li>
 						<li>
-							<a href="./consulta2.php"><i class="zmdi zmdi-male-alt zmdi-hc-fw"></i> Filtrar por Fechas</a>
+							<a href="./consulta2.php"><i class="material-icons">date_range</i> Filtrar por Fechas</a>
 						</li>
 					</ul>
 				</li>
 				<li>
 					<a href="#!" class="btn-sideBar-SubMenu">
-						<i class="zmdi zmdi-card zmdi-hc-fw"></i> REPORTES <i class="zmdi zmdi-caret-down pull-right"></i>
+						<i class="material-icons">print</i> REPORTES <i class="zmdi zmdi-caret-down pull-right"></i>
 					</a>
 					<ul class="list-unstyled full-box">
 						<li>
 							<!-- <a href="./consulta3/consulta3.php" target="_blank"><i class="zmdi zmdi-timer zmdi-hc-fw"></i> Reporte General</a> -->
-							<a href="./reporte2.php" target="_blank"><i class="zmdi zmdi-timer zmdi-hc-fw"></i> General</a>
+							<a href="./reporte2.php" target="_blank"><i class="material-icons">local_printshop</i> General</a>
 						</li>
 						<li>
-							<a href="./reporte1.php"><i class="zmdi zmdi-money-box zmdi-hc-fw"></i> Por Fechas</a>
+							<a href="./reporte1.php"><i class="material-icons">local_printshop</i> Por Fechas <i class="material-icons">date_range</i></a>
 						</li>
 					</ul>
 				</li>
 				<li>
 					<a href="#!" class="btn-sideBar-SubMenu">
-						<i class="zmdi zmdi-shield-security zmdi-hc-fw"></i> ACERCA DE <i class="zmdi zmdi-caret-down pull-right"></i>
+					<i class="material-icons">info</i> ACERCA DE <i class="zmdi zmdi-caret-down pull-right"></i>
 					</a>
 					<ul class="list-unstyled full-box">
 						<li>
-							<a href="acerca-hospital.php"><i class="zmdi zmdi-balance zmdi-hc-fw"></i> Hospital</a>
+							<a href="acerca-hospital.php"><i class="zmdi zmdi-balance zmdi-hc-fw"></i> Asociado I.</a>
 						</li>
 						<li>
-							<a href="acerca-autor.php"><i class="zmdi zmdi-balance zmdi-hc-fw"></i> Autor</a>
+							<a href="acerca-autor.php"><i class="material-icons">info_outline</i> Autor</a>
 						</li>
 					</ul>
 				</li>

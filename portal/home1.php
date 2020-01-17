@@ -38,7 +38,7 @@
 
         <!-- Content page -->
 		<?php //include("conexion/foc2_ajax1.php");
-			include("conexion/lectura_sensores.php");
+			include("conexion/lectura_sensoresx.php");
 		?>
 
 		<!-- Content page -->
@@ -107,36 +107,6 @@
 		</div>
 		<div class="full-box text-center" style="padding: 30px 10px;">
 
-
-		<article class="full-box tile">
-				<!-- <div class="full-box tile-title text-center text-titles text-uppercase deep-orange darken-4"> -->
-			<div class="full-box tile-title" style="background-color: rgb(81, 83, 81);">
-					Diastolic Pressure ~ [mmHg]
-			</div>
-			<div class="deep-orange darken-4 full-box tile-icon text-center ">
-				<div class="row"></div>
-					<p class="full-box" id="diastolic_ico" ></p>
-			</div>
-			<div class="full-box tile-number text-titles">
-				<p class="full-box" id="diastolic"></p>
-				<div id="fh_diastolic"><small></small></div>
-			</div>
-		</article>
-			
-			<!-- <article class="full-box tile">
-				<div class="deep-orange darken-4 full-box tile-title text-center text-titles">
-					Diastolic Pressure ~ [mmHg]
-				</div>
-				<div class="full-box tile-icon text-center">
-				<div id="colorFondoF1"></div>
-				<div class="full-box tile-icon text-center" id="coloryNameIconF1"></div>
-				</div>
-				<div class="full-box tile-number text-titles">
-					<p class="full-box" id="textofoco1" ></p>
-					<div id="f1"><small></small></div>
-				</div>
-			</article> -->
-
 			<article class="full-box tile">
 				<div class="full-box tile-title" style="background-color: rgb(81, 83, 81);">
 					Systolic Pressure ~ [mmHg]
@@ -150,6 +120,21 @@
 					<div id="fh_systolic"><small></small></div>
 				</div>
 			</article>
+
+			<article class="full-box tile">
+				<!-- <div class="full-box tile-title text-center text-titles text-uppercase deep-orange darken-4"> -->
+			<div class="full-box tile-title" style="background-color: rgb(81, 83, 81);">
+					Diastolic Pressure ~ [mmHg]
+			</div>
+			<div class="deep-orange darken-4 full-box tile-icon text-center ">
+				<div class="row"></div>
+					<p class="full-box" id="diastolic_ico" ></p>
+			</div>
+			<div class="full-box tile-number text-titles">
+				<p class="full-box" id="diastolic"></p>
+				<div id="fh_diastolic"><small></small></div>
+			</div>
+		</article>
 
 			<article class="full-box tile">
 				<div class="full-box tile-title" style="background-color: rgb(81, 83, 81);">

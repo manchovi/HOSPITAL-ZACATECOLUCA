@@ -2,7 +2,10 @@
 function conexion(){
 	$conn = null;
 	$host = 'localhost';
-	$db = 'mjgl_hospital';
+	/* $db = 'mjgl_tesis';
+	$user = 'mjgl_tesis';
+	$pwd = 'tesis_utla_2019_'; */
+	$db = 'mjgl_tesis';
 	$user = 'root';
 	$pwd = '';
 	
@@ -13,7 +16,6 @@ try{
 	$mitz="America/El_Salvador";
     $tz = (new DateTime('now', new DateTimeZone($mitz)))->format('P');
     $conn->exec("SET time_zone='$tz';");
-    //echo "Conexion hecha...";
     
 	
 }catch(PDOException $e){
@@ -22,9 +24,6 @@ try{
 	exit();
 }
 	return $conn;
-	
 }
 
-//conexion();
-
-?>
+	?>

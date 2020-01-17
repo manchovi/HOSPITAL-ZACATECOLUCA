@@ -3,7 +3,10 @@
 <head>
 	<title>Reporte Filtrado Fechas</title>
 	<!-- <link rel="icon" href="./../favicon.ico" type="image/x-icon"> -->
-	<link rel="shortcut icon" href="dompdf/utla.png">
+	<!-- <link rel="shortcut icon" href="dompdf/utla.png"> -->
+	<!-- <link rel="shortcut icon" href="./assets/img/logohospital1.png"> -->
+	<link rel="shortcut icon" href="logohospital.jpg">
+
 	<meta charset="UTF-8">
 	<!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> -->
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -34,15 +37,15 @@
 									   Reporte Filtrado por Fechas
 									</td>
 									<td rowspan=3 align=right>
-									   <img src=utla.png alt=logoU width=100px height=100px />
+									   <img src="logohospital.jpg" alt=logoU width=100px height=100px />
 									</td>
 								</tr>
 								<tr><td left>
-									   Información Recopilada por los Sensores en el Laboratorio Especializado de Electrónica.
+									   Información Recopilada y Encontrada en Base al Criterio de Búsqueda Especificado.
 									</td>
 								</tr>
 								<tr><td left>
-									  Variables Físicas de Monitoreo: Estado y Control de Luminarias, Temperatura Ambiente y Humedad Relativa.
+									  Variables Biométricas del Paciente.
 									</td>
 								</tr>
 			</table>';
@@ -55,15 +58,15 @@
 	$html .= '<thead>';
 	$html .= '<tr bgcolor=grey>';
 	$html .= '<th>N°</th>';
-	$html .= '<th>Temperatura °C </th>';
-	$html .= '<th>Humedad % </th>';
-	$html .= '<th>Luz 1</th>';
-	$html .= '<th>Luz 2</th>';
-	$html .= '<th>Luz 3</th>';
-	$html .= '<th>Luz 4</th>';
-	$html .= '<th>Luz 5</th>';
-	$html .= '<th>Luz 6</th>';
-	$html .= '<th>Fecha/Hora</th>';
+	$html .= '<th>Frec. Cardiaca </th>';
+	$html .= '<th>SpO2 </th>';
+	$html .= '<th>Diastolic</th>';
+	$html .= '<th>Systolic</th>';
+	$html .= '<th>Pulse/min</th>';
+	$html .= '<th>Frec_respiratoria</th>';
+	$html .= '<th>Temp. Corporal</th>';
+	$html .= '<th>Alarma</th>';
+	$html .= '<th>Fecha - Hora</th>';
 	$html .= '</tr>';
 	$html .= '</thead>';
 	$html .= '<tbody>';
@@ -79,21 +82,21 @@
 	
 	//$result_request = "SELECT * FROM sensores ORDER BY id_sensor DESC LIMIT 10";
 	//$resultado_request = mysqli_query($conn, $result_request);
-	$resultado_request=mysqli_query($conn, "SELECT * FROM `sensores` WHERE `fecha` BETWEEN '$date1' AND '$date2'") or die(mysqli_error());
+	$resultado_request=mysqli_query($conn, "SELECT * FROM `tb_sensores` WHERE `fecha` BETWEEN '$date1' AND '$date2'") or die(mysqli_error());
 	
-	while($row_request = mysqli_fetch_assoc($resultado_request)){
+	while($mostrar = mysqli_fetch_assoc($resultado_request)){
 		$cont=$cont+1;
 		$html .= '<tr align=center>';
-		$html .= '<td>'. $cont . "</td>";
-		$html .= '<td>'.$row_request['temperatura'] . " °C~" . number_format(($row_request["temperatura"] * 1.8)+32.0,2) ." °F". "</td>";
-		$html .= '<td>'.$row_request['humedad'] ."</td>";
-		$html .= '<td>'.$row_request['luz1'] . "</td>";
-		$html .= '<td>'.$row_request['luz2'] . "</td>";
-		$html .= '<td>'.$row_request['luz3'] . "</td>";
-		$html .= '<td>'.$row_request['luz4'] . "</td>";
-		$html .= '<td>'.$row_request['luz5'] . "</td>";
-		$html .= '<td>'.$row_request['luz6'] . "</td>";
-		$html .= '<td>'.$row_request['fecha'] . "~" . $row_request['hora'] ."</td></tr>";		
+		$html .= '<td>'. $mostrar['id'] . "</td>";
+		$html .= '<td>'. $mostrar['frec_cardiaca']. "</td>";
+		$html .= '<td>'. $mostrar['spo2'] ."</td>";
+		$html .= '<td>'. $mostrar['ta_diastolic'] . "</td>";
+		$html .= '<td>'. $mostrar['ta_systolic'] . "</td>";
+		$html .= '<td>'. $mostrar['ta_pulse_min'] . "</td>";
+		$html .= '<td>'. $mostrar['frec_respiratoria'] . "</td>";
+		$html .= '<td>'. $mostrar['temp_corporal']. " °C~" . number_format(($mostrar['temp_corporal'] * 1.8)+32.0,2) ." °F" . "</td>";
+		$html .= '<td>'. $mostrar['alarma'] . "</td>";
+		$html .= '<td>'. $mostrar['fecha'] ." ".  $mostrar['hora'] ."</td></tr>";		
 	}
 	$html .= '</tbody>';
 	$html .= '</table';

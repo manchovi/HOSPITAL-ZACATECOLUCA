@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <!-- <link rel="icon" href="./favicon.ico" type="image/x-icon"> -->
-	<link rel="shortcut icon" href="./assets/img/utla.png">
+	<link rel="shortcut icon" href="./assets/img/logohospital1.png">
 	
 	<link type="text/css" rel="stylesheet" href="./css/estilo.css" />
     <!-- Bootstrap Core Css -->
@@ -73,33 +73,33 @@
 							<table class="table table-hover text-center">
 								<!-- <thead class="alert-info"> -->
 								<thead>
-                                        <tr>
-											<th class="text-center">#</th>
-											<th class="text-center">Temperatura</th>
-											<th class="text-center">Humedad</th>
-											<th class="text-center">Luminaria # 1</th>
-											<th class="text-center">Luminaria # 2</th>
-											<th class="text-center">Luminaria # 3</th>
-											<th class="text-center">Luminaria # 4</th>
-											<th class="text-center">Luminaria # 5</th>
-											<th class="text-center">Luminaria # 6</th>
-											<th class="text-center">Fecha - Hora</th>
+										<tr>
+										<th class="text-center">N°</th>
+										<th class="text-center">Frec. Cardiaca</th>
+										<th class="text-center">SpO2</th>
+										<th class="text-center">Diastolic</th>
+										<th class="text-center">Systolic</th>
+										<th class="text-center">Pulse/min</th>
+										<th class="text-center">Frec_respiratoria</th>
+										<th class="text-center">Temp. Corporal</th>
+										<th class="text-center">Alarma</th>
+										<th class="text-center">Fecha - Hora</th>
 										</tr>
-                                    </thead>
-                                    <tfoot>
+									</thead>
+									<tfoot>
 										<tr>
 											<th class="text-center">#</th>
-											<th class="text-center">°C ~ °F</th>
-											<th class="text-center">Relativa [%]</th>
-											<th class="text-center">Status # 1</th>
-											<th class="text-center">Status # 2</th>
-											<th class="text-center">Status # 3</th>
-											<th class="text-center">Status # 4</th>
-											<th class="text-center">Status # 5</th>
-											<th class="text-center">Status # 6</th>
+											<th class="text-center">PRbpm</th>
+											<th class="text-center">%SpO2</th>
+											<th class="text-center">mmHg</th>
+											<th class="text-center">mmHg</th>
+											<th class="text-center">bpm</th>
+											<th class="text-center">Status</th>
+											<th class="text-center">[°C ~ °F]</th>
+											<th class="text-center">Status</th>
 											<th class="text-center">Time</th>
 										</tr>
-                                    </tfoot>
+									</tfoot>
 
 
 								<tbody class="text-center">

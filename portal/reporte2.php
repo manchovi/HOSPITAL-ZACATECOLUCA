@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>*Historial de Registros de Información de Sensores
+    <title>*Historial de Datos Clínicos del Paciente
         
     </title>
     <!-- Favicon-->
     <!-- <link rel="icon" href="./favicon.ico" type="image/x-icon"> -->
-    <link rel="shortcut icon" href="./assets/img/utla.png">
+    <link rel="shortcut icon" href="./assets/img/logohospital1.png">
 
     <!-- Google Fonts 
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -63,55 +63,56 @@
                                 <table id="tabla" class="table table-bordered table-striped table-hover dataTable js-exportable">
                                 <!-- <table id="tabla" class="table table-bordered table-striped table-hover"> -->
                                     <thead>
-                                        <tr>
-											<th class="text-center">#</th>
-											<th class="text-center">Temperatura</th>
-											<th class="text-center">Humedad</th>
-											<th class="text-center">Luminaria # 1</th>
-											<th class="text-center">Luminaria # 2</th>
-											<th class="text-center">Luminaria # 3</th>
-											<th class="text-center">Luminaria # 4</th>
-											<th class="text-center">Luminaria # 5</th>
-											<th class="text-center">Luminaria # 6</th>
-											<th class="text-center">Fecha - Hora</th>
+										<tr>
+										<th class="text-center">N°</th>
+										<th class="text-center">Frec. Cardiaca</th>
+										<th class="text-center">SpO2</th>
+										<th class="text-center">Diastolic</th>
+										<th class="text-center">Systolic</th>
+										<th class="text-center">Pulse/min</th>
+										<th class="text-center">Frec_respiratoria</th>
+										<th class="text-center">Temp. Corporal</th>
+										<th class="text-center">Alarma</th>
+										<th class="text-center">Fecha - Hora</th>
 										</tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
+									</thead>
+									<tfoot>
+										<tr>
 											<th class="text-center">#</th>
-											<th class="text-center">Temperatura</th>
-											<th class="text-center">Humedad</th>
-											<th class="text-center">Luminaria # 1</th>
-											<th class="text-center">Luminaria # 2</th>
-											<th class="text-center">Luminaria # 3</th>
-											<th class="text-center">Luminaria # 4</th>
-											<th class="text-center">Luminaria # 5</th>
-											<th class="text-center">Luminaria # 6</th>
-											<th class="text-center">Fecha - Hora</th>
+											<th class="text-center">PRbpm</th>
+											<th class="text-center">%SpO2</th>
+											<th class="text-center">mmHg</th>
+											<th class="text-center">mmHg</th>
+											<th class="text-center">bpm</th>
+											<th class="text-center">Status</th>
+											<th class="text-center">[°C ~ °F]</th>
+											<th class="text-center">Status</th>
+											<th class="text-center">Time</th>
 										</tr>
-                                    </tfoot>
+									</tfoot>
+
                                     <tbody>
                                    
                                    
                                     <?php 
 										include_once("conn.php");
 										$conta = 1;
-										$sql="SELECT * from sensores ORDER BY id_sensor DESC";
+										$sql="SELECT * from tb_sensores ORDER BY id DESC";
 										//$sql="SELECT * from sensores ORDER BY id_sensor DESC LIMIT 5";
 										$result=mysqli_query($conn,$sql);
 										while($mostrar=mysqli_fetch_array($result)){
 										?>
 										<tr>
-											<td><?php echo $conta++ ?></td>
-											<td><?php echo $mostrar['temperatura'] ?></td>
-											<td><?php echo $mostrar['humedad'] ?></td>
-											<td><?php echo $mostrar['luz1'] ?></td>
-											<td><?php echo $mostrar['luz2'] ?></td>
-											<td><?php echo $mostrar['luz3'] ?></td>
-											<td><?php echo $mostrar['luz4'] ?></td>
-											<td><?php echo $mostrar['luz5'] ?></td>
-											<td><?php echo $mostrar['luz6'] ?></td>
-											<td><?php echo $mostrar['fecha'] ." ".  $mostrar['hora'] ?></td>
+                                        <td class="text-center"><?php echo $mostrar['id'] ?></td>
+                                        <td class="text-center"><?php echo $mostrar['frec_cardiaca'] ?></td>
+                                        <td class="text-center"><?php echo $mostrar['spo2'] ?></td>
+                                        <td class="text-center"><?php echo $mostrar['ta_diastolic'] ?></td>
+                                        <td class="text-center"><?php echo $mostrar['ta_systolic'] ?></td>
+                                        <td class="text-center"><?php echo $mostrar['ta_pulse_min'] ?></td>
+                                        <td class="text-center"><?php echo $mostrar['frec_respiratoria'] ?></td>
+                                        <td class="text-center"><?php echo $mostrar['temp_corporal']. " °C~" . number_format(($mostrar['temp_corporal'] * 1.8)+32.0,2) ." °F"?></td>
+                                        <td class="text-center"><?php echo $mostrar['alarma'] ?></td>
+                                        <td class="text-center"><?php echo $mostrar['fecha'] ." ".  $mostrar['hora'] ?></td>
 										</tr>
 										
 									<?php 
