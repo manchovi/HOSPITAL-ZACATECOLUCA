@@ -19,9 +19,6 @@
 	<link href="./css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 	<link rel="stylesheet" href="./css/main.css">
 
-    <script type="text/javascript" src="./js/Chart.bundle.min.js"></script>
-
-
 	<!--<script src="jquery-2.1.1.min.js"></script>-->
 </head>
 <body>
@@ -44,7 +41,7 @@
 
 
         <!-- Content page -->
-    	<?php include("conexion/foc2_ajax.php"); ?>
+    	<?php //include("conexion/foc2_ajax.php");  //Eso 2 ?>
 
 		<!--  <section class="content">  -->
 		<section class="full-box"> 
@@ -56,7 +53,8 @@
 
 
             <?php //include("conexion/foc2_ajax1.php");
-			include("conexion/lectura_sensores.php");
+
+			//include("conexion/lectura_sensores.php");  //Eso 1
 		    ?>
 
 
@@ -66,11 +64,11 @@
                     <div class="info-box bg-pink hover-expand-effect">
                         <div class="icon">
                             <!-- <i class="material-icons">playlist_add_check</i> -->
-                            <img src="assets/img/9.png" height="80" width="80" alt="icono spo2" />
+                            <img src="assets/img/7.png" height="80" width="80" alt="icono temperature" />
                         </div>
                         <div class="content">
-                            <div class="text">SPO2 ~ [%SpO2]</div>
-                            <div id="spo2" class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20">0</div>
+                            <div class="text">Temperatura Corporal</div>
+                            <div id="tc_gc" class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20">0  °C</div>
                             <!-- <div id="fh_spo2" style= "font-size: 5px;">/div> -->
                         </div>
                     </div>
@@ -80,11 +78,11 @@
                     <div class="info-box bg-cyan hover-expand-effect">
                         <div class="icon">
                             <!-- <i class="material-icons">help</i> -->
-                            <img src="assets/img/2.png" height="80" width="80" alt="icono spo2" />
+                            <img src="assets/img/7.png" height="80" width="80" alt="icono temperature" />
                         </div>
                         <div class="content">
-                            <div class="text">Frec. Cardiaca ~ [PRbpm]</div>
-                            <div id="fc" class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20">0</div>
+                            <div class="text">Temperatura Corporal</div>
+                            <div id="tc_gf" class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20">0 °F</div>
                         </div>
                     </div>
                 </div>
@@ -94,8 +92,8 @@
                             <i class="material-icons">schedule</i>
                         </div>
                         <div class="content">
-                            <div class="text">Tiempo Sensado (MIN)</div>
-                            <div class="number count-to" data-from="0" data-to="243" data-speed="1000" data-fresh-interval="20">5</div>
+                            <div class="text">Tiempo Sensado </div>
+                            <div class="number count-to" data-from="0" data-to="243" data-speed="1000" data-fresh-interval="20">5 Min.</div>
                         </div>
                     </div>
                 </div>
@@ -122,7 +120,7 @@
                         <div class="header">
                             <div class="row clearfix">
                                 <div class="col-xs-12 col-sm-6">
-                                    <h2>Monitor de Oximetría</h2>
+                                    <h2>Monitor de Variable Biométrica: Temperatura Corporal</h2>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 align-right">
                                     <div class="switch panel-switch-btn">
@@ -153,124 +151,123 @@
                                 <!-- Acá pondré una gráfica -->
 
                                 <?php
-                                    include_once("conn.php");
-                                    $frec_cardiaca = 'frec_cardiaca';
-                                    $spo2 = 'spo2';
-
-                                    $diastolic = 'ta_diastolic';
-                                    $systolic = 'ta_systolic';
-                                    $pulse_min = 'ta_pulse_min';
-
-                                    $fecha = 'fecha';
-                                    $hora = 'hora';
-
-                                    //query to get data from the table
-                                    $sql = "SELECT * FROM `tb_sensores` ORDER BY id DESC LIMIT 10";
-                                    $result = mysqli_query($conn, $sql);
-
-                                    //loop through the returned data
-                                    while ($row = mysqli_fetch_array($result)) {
-                                        $frec_cardiaca = $frec_cardiaca . '"'. $row['frec_cardiaca'].'",';
-                                        $spo2 = $spo2 . '"'. $row['spo2'] .'",';
-
-                                        $diastolic = $diastolic . '"'. $row['ta_diastolic'] .'",';
-                                        $systolic = $systolic . '"'. $row['ta_systolic'] .'",';
-                                        $pulse_min = $pulse_min . '"'. $row['ta_pulse_min'] .'",';
-
-
-                                        $fecha = $fecha . '"'. $row['fecha'] ."~" . $row['hora'] .'",';
-                                        //$hora = $hora . '"'. $row['hora'] .'",';
-                                    }
-
-                                    $frec_cardiaca = trim($frec_cardiaca,"frec_cardiaca");
-                                    $spo2 = trim($spo2,"spo2");
-
-                                    $diastolic = trim($diastolic,"ta_diastolic");
-                                    $systolic = trim($systolic,"ta_systolic");
-                                    $pulse_min = trim($pulse_min,"ta_pulse_min");
-
-
-                                    $fecha = trim($fecha,"fecha");
-
+                                    /* include_once("conn.php"); */
+                                    //include_once("./rt_graph_temp1.php");
                                 ?>
 
+                               
+                                <!-- <canvas id="chartContainer" style="width: 100%; height: 65vh; background: #fff; border: 4px solid #555652; margin-top: 10px;"></canvas> -->
                                 <!--Inicio Gráfica Línea-->
-                                <canvas id="line_chart" style="width: 100%; height: 65vh; background: #fff; border: 4px solid #555652; margin-top: 10px;"></canvas>
-                                <script>
-                                var div_line_chart = document.getElementById("line_chart");
-                                var myLineChart = new Chart(div_line_chart, {
-                                    type: 'line',
-                                    data: {
-                                        //labels: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul"],
-                                        labels: [<?php echo $fecha; ?>],
-                                        datasets: [
-                                            {
-                                                label: "Frecuencia Cardiaca [PRbpm]",
-                                                fill: false,
-                                                lineTension: 0.1,
-                                                backgroundColor: "red",
-                                                //borderColor: "#357ebd",
-                                                borderColor: "red",
-                                                borderCapStyle: 'butt',
-                                                //borderDash: [],
-                                                borderDash: [5, 5],         //Define estilo de border descontinuo o de puntitos.
-                                                borderDashOffset: 0.0,
-                                                borderJoinStyle: 'miter',
-                                                //pointBorderColor: "#3276B1",
-                                                pointBorderColor: "blue",
-                                                //pointBackgroundColor: "#3276B1",
-                                                //pointBackgroundColor: 'rgba(255,150,0,0.5)',
-                                                pointBackgroundColor: "blue",
-                                                pointBorderWidth: 2,
-                                                pointHoverRadius: 5,
-                                                pointHoverBackgroundColor: "#3276B1",
-                                                pointHoverBorderColor: "#3276B1",
-                                                pointHoverBorderWidth: 2,
-                                                pointRadius: 5,
-                                                pointHitRadius: 30,
-                                                pointStyle: 'rectRounded',
-                                                //pointRadius: 1,
-                                                pointHitRadius: 10,
-                                                //data: [65, 59, 80, 81, 56, 55, 40],
-                                                data: [<?php echo  $frec_cardiaca; ?>],
-                                            },
-                                            {
-                                                label: "SpO2 [%]",
-                                                fill: false,
-                                                lineTension: 0.1,
-                                                backgroundColor: "green",
-                                                //borderColor: "#357ebd",
-                                                borderColor: "grey",
-                                                borderCapStyle: 'butt',
-                                                //borderDash: [],
-                                                borderDash: [5, 5],         //Define estilo de border descontinuo o de puntitos.
-                                                borderDashOffset: 0.0,
-                                                borderJoinStyle: 'miter',
-                                                //pointBorderColor: "#3276B1",
-                                                pointBorderColor: "green",
-                                                //pointBackgroundColor: "#3276B1",
-                                                //pointBackgroundColor: 'rgba(255,150,0,0.5)',
-                                                pointBackgroundColor: "green",
-                                                pointBorderWidth: 2,
-                                                pointHoverRadius: 5,
-                                                pointHoverBackgroundColor: "#3276B1",
-                                                pointHoverBorderColor: "#3276B1",
-                                                pointHoverBorderWidth: 2,
-                                                pointRadius: 5,
-                                                pointHitRadius: 30,
-                                                pointStyle: 'rectRounded',
-                                                //pointRadius: 1,
-                                                pointHitRadius: 10,
-                                                //data: [65, 59, 80, 81, 56, 55, 40],
-                                                data: [<?php echo $spo2; ?>],
+                                <div id="chartContainer" style="width: 100%; height: 65vh; background: #fff; border: 4px solid #555652; margin-top: 10px;" ></div>
+                                <script type="text/javascript">
+                                    function mostrar(){
+                                        $.ajax({
+                                            //type:"GET",
+                                            url:"./rt_graph_temp1.php",
+                                            //dataType: 'html',
+                                            dataType: 'json',
+                                            contentType: "application/json; charset=utf-8",
+                                            method: "GET",
+                                            success:function(data){
+                                                var chart = new CanvasJS.Chart("chartContainer", {
+                                                theme: "light1",                   // "light2", "dark1", "dark2"
+                                                animationEnabled: false,          // change to true		
+                                                zoomEnabled: true,
+                                                title:{
+                                                    text: "Temperatura [°C]",
+                                                    //color: "yellow",
+                                                    fontSize: 20
+                                                    //margin: 25
+                                                },
+                                                subtitles: [{
+                                                            text: "Paciente XXXX000",
+                                                            fontSize: 16,
+                                                            margin: 20
+                                                        }],
+                                                axisX: {
+                                                    interval: 25,          //Esta propiedad la probaré luego.
+                                                    title: "X-Axis",
+                                                    //titleFontColor: "yellow",
+                                                    titleFontSize: 20,
+                                                    crosshair: {
+                                                                enabled: true,
+                                                                snapToDataPoint: true
+                                                                }
+                                                },
+                                                axisY: {
+                                                        title: "Temperature [°C]",
+                                                        //titleFontColor: "yellow",
+                                                        titleFontSize: 20,
+                                                        logarithmic: false, //change it to true
+                                                        lineColor: "#51CDA0",
+                                                        gridThickness: 1,                     //Juego con los border del grafico. La cuadricula
+                                                        lineThickness: 1,                     //Juego con los border del grafico. La cuadricula
+                                                        suffix: " °C",
+                                                        crosshair: {
+                                                        enabled: true
+                                                    }
+                                                },
+                                                toolTip:{
+                                                            shared:true
+                                                        },  
+                                                legend:{
+                                                        cursor:"pointer",
+                                                        verticalAlign: "top",
+                                                        fontSize: 16,
+                                                        horizontalAlign: "left",
+                                                        dockInsidePlotArea: true,
+                                                        //itemclick: toogleDataSeries
+                                                    },
+                                                /*data: [
+                                                    {
+                                                        dataPoints: datos
+                                                    }
+                                                ]*/
+                                                data: [
+                                                        {
+                                                        //type: "line",  //line, stackedBar, stackedBar
+                                                        type: "line",  
+                                                        //type: "spline",     
+                                                        lineThickness: 4,            //Defino Grosor de la linea principal
+                                                        fillOpacity: .3,      
+                                                        yValueFormatString: "#,### °C",
+                                                        indexLabel: "{y}",
+                                                        showInLegend: true,
+                                                        name: "Temperatura [°C]",
+                                                        lineDashType: "shortDot",  //Default: solid. solid,shortDash,shortDot,shortDashDot,shortDashDotDot,dot,dash,dashDot,longDash,longDashDot,longDashDotDot.
+                                                        markerType: "cross",      //none, circle, square, triangle and cross. Default: circle
+                                                        markerSize: 20,
+                                                        //ValueFormatString:        "DD MMM, YYYY",
+                                                        color: "#22aa77",
+                                                        lineColor: "red",
+                                                        dataPoints: data
+                                                        //dataPoints: datos
+                                                        /*  dataPoints: [{ label: x,  y: y  }] */
+                                                        /*  dataPoints: [
+                                                                        { label: "apple",  y: 10  },
+                                                                        { label: "orange", y: 15  },
+                                                                        { label: "banana", y: 25  },
+                                                                        { label: "mango",  y: 30  },
+                                                                        { label: "grape",  y: 28  }
+                                                                    ] */
+                                                        }
+                                                    ] 
+                                            });
+                                            chart.render();
+
+                                        /*  function toogleDataSeries(e){
+                                            if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                                                e.dataSeries.visible = false;
+                                            } else{
+                                                e.dataSeries.visible = true;
                                             }
-                                        ]
-                                    },
-                                    options: {
-                                        responsive: true,
-                                        maintainAspectRatio: true,
-                                    }
-                                });
+                                            chart.render();
+                                            } */
+
+                                        }
+                                    });
+                                }
+                                setInterval(mostrar,1000);
                                 </script>
                                 <!--Fin Gráfica Línea-->
                                </div> 
@@ -382,115 +379,13 @@
                                 
                                 ?>
 
-                                <!--Inicio Gráfica Línea-->
+                                
                                 <canvas id="line_chart1" style="width: 100%; height: 65vh; background: #fff; border: 4px solid #555652; margin-top: 10px;"></canvas>
-                                <script>
-                                var div_line_chart = document.getElementById("line_chart1");
-                                var myLineChart = new Chart(div_line_chart, {
-                                    type: 'line',
-                                    data: {
-                                        //labels: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul"],
-                                        labels: [<?php echo $fecha; ?>],
-                                        datasets: [
-                                            {
-                                                label: "Systolic Pressure ~ [mmHg]",
-                                                fill: false,
-                                                lineTension: 0.1,
-                                                backgroundColor: "red",
-                                                //borderColor: "#357ebd",
-                                                borderColor: "red",
-                                                borderCapStyle: 'butt',
-                                                //borderDash: [],
-                                                borderDash: [5, 5],         //Define estilo de border descontinuo o de puntitos.
-                                                borderDashOffset: 0.0,
-                                                borderJoinStyle: 'miter',
-                                                //pointBorderColor: "#3276B1",
-                                                pointBorderColor: "blue",
-                                                //pointBackgroundColor: "#3276B1",
-                                                //pointBackgroundColor: 'rgba(255,150,0,0.5)',
-                                                pointBackgroundColor: "blue",
-                                                pointBorderWidth: 2,
-                                                pointHoverRadius: 5,
-                                                pointHoverBackgroundColor: "#3276B1",
-                                                pointHoverBorderColor: "#3276B1",
-                                                pointHoverBorderWidth: 2,
-                                                pointRadius: 5,
-                                                pointHitRadius: 30,
-                                                pointStyle: 'rectRounded',
-                                                //pointRadius: 1,
-                                                pointHitRadius: 10,
-                                                //data: [65, 59, 80, 81, 56, 55, 40],
-                                                data: [<?php echo  $systolic; ?>],
-                                            },
-                                            {
-                                                label: "Diastolic Pressure ~ [mmHg]",
-                                                fill: false,
-                                                lineTension: 0.1,
-                                                backgroundColor: "green",
-                                                //borderColor: "#357ebd",
-                                                borderColor: "grey",
-                                                borderCapStyle: 'butt',
-                                                //borderDash: [],
-                                                borderDash: [5, 5],         //Define estilo de border descontinuo o de puntitos.
-                                                borderDashOffset: 0.0,
-                                                borderJoinStyle: 'miter',
-                                                //pointBorderColor: "#3276B1",
-                                                pointBorderColor: "green",
-                                                //pointBackgroundColor: "#3276B1",
-                                                //pointBackgroundColor: 'rgba(255,150,0,0.5)',
-                                                pointBackgroundColor: "green",
-                                                pointBorderWidth: 2,
-                                                pointHoverRadius: 5,
-                                                pointHoverBackgroundColor: "#3276B1",
-                                                pointHoverBorderColor: "#3276B1",
-                                                pointHoverBorderWidth: 2,
-                                                pointRadius: 5,
-                                                pointHitRadius: 30,
-                                                pointStyle: 'rectRounded',
-                                                //pointRadius: 1,
-                                                pointHitRadius: 10,
-                                                //data: [65, 59, 80, 81, 56, 55, 40],
-                                                data: [<?php echo $diastolic; ?>],
-                                            },
-                                            {
-                                                label: "Heart Rate ~ [bmp]",
-                                                fill: false,
-                                                lineTension: 0.1,
-                                                backgroundColor: "blue",
-                                                //borderColor: "#357ebd",
-                                                borderColor: "blue",
-                                                borderCapStyle: 'butt',
-                                                //borderDash: [],
-                                                borderDash: [5, 5],         //Define estilo de border descontinuo o de puntitos.
-                                                borderDashOffset: 0.0,
-                                                borderJoinStyle: 'miter',
-                                                //pointBorderColor: "#3276B1",
-                                                pointBorderColor: "black",
-                                                //pointBackgroundColor: "#3276B1",
-                                                //pointBackgroundColor: 'rgba(255,150,0,0.5)',
-                                                pointBackgroundColor: "black",
-                                                pointBorderWidth: 2,
-                                                pointHoverRadius: 5,
-                                                pointHoverBackgroundColor: "#3276B1",
-                                                pointHoverBorderColor: "#3276B1",
-                                                pointHoverBorderWidth: 2,
-                                                pointRadius: 5,
-                                                pointHitRadius: 30,
-                                                pointStyle: 'rectRounded',
-                                                //pointRadius: 1,
-                                                pointHitRadius: 10,
-                                                //data: [65, 59, 80, 81, 56, 55, 40],
-                                                data: [<?php echo $pulse_min; ?>],
-                                            }
-                                        ]
-                                    },
-                                    options: {
-                                        responsive: true,
-                                        maintainAspectRatio: true,
-                                    }
-                                });
-                                </script>
+                                
+                                <!--Inicio Gráfica Línea-->
+
                                 <!--Fin Gráfica Línea-->
+
                                </div> 
                             </div>
                         </div>
@@ -732,8 +627,12 @@
 
 	
 
-	<!--====== Scripts -->
-	<script src="./js/jquery-3.1.1.min.js"></script>
+    <!--====== Scripts -->
+     <!-- <script type="text/javascript" src="./js/Chart.bundle.min.js"></script> -->
+     <script type="text/javascript" src="./js1/jquery-2.2.3.min.js"></script>
+    <script type="text/javascript" src="./js1/canvasjs.min.js"></script>
+
+	<!-- <script src="./js/jquery-3.1.1.min.js"></script> -->
 	<script src="./js/sweetalert2.min.js"></script>
 	<script src="./js/bootstrap.min.js"></script>
 	<script src="./js/material.min.js"></script>

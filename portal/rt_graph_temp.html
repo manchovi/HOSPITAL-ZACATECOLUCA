@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+    <!-- <script src="jquery.js"></script>
+    <script src="canvasjs.js"></script> -->
+    <script src="./js1/jquery-2.2.3.min.js"></script>
+    <script src="./js1/canvasjs.min.js"></script>
+    <!-- <script src="https://canvasjs.com/assets/script/canvasjs.min.js"> </script> -->
+
+    <script type="text/javascript">
+		function mostrar(){
+            $.ajax({
+				//type:"GET",
+				url:"./rt_graph_temp1.php",
+				//dataType: 'html',
+                dataType: 'json',
+                contentType: "application/json; charset=utf-8",
+                method: "GET",
+				success:function(data){
+                    var chart = new CanvasJS.Chart("chartContainer", {
+                    theme: "dark1",                  // "light2", "dark1", "dark2"
+                    animationEnabled: false,          // change to true		
+                    zoomEnabled: true,
+                    title:{
+                        text: "Temperatura [°C]",
+                        color: "yellow",
+                        fontSize: 20
+                        //margin: 25
+                    },
+                    subtitles: [{
+                                text: "Paciente XXXX000",
+                                fontSize: 16,
+                                margin: 20
+                            }],
+                    axisX: {
+                        interval: 25,          //Esta propiedad la probaré luego.
+                        title: "X-Axis",
+                        //titleFontColor: "yellow",
+                        titleFontSize: 20,
+                        crosshair: {
+                                    enabled: true,
+                                    snapToDataPoint: true
+		                            }
+                    },
+                    axisY: {
+                            title: "Temperature [°C]",
+                            titleFontColor: "yellow",
+                            titleFontSize: 20,
+                            logarithmic: false, //change it to true
+                            lineColor: "#51CDA0",
+                            gridThickness: 1,                     //Juego con los border del grafico. La cuadricula
+                            lineThickness: 1,                     //Juego con los border del grafico. La cuadricula
+		                    suffix: " °C",
+                            crosshair: {
+                            enabled: true
+                        }
+                    },
+                    toolTip:{
+                                shared:true
+                            },  
+                    legend:{
+                            cursor:"pointer",
+                            verticalAlign: "top",
+                            fontSize: 16,
+                            horizontalAlign: "left",
+                            dockInsidePlotArea: true,
+                            //itemclick: toogleDataSeries
+                        },
+                    /*data: [
+                        {
+                            dataPoints: datos
+                        }
+                    ]*/
+                    data: [
+                            {
+                              //type: "line",  //line, stackedBar, stackedBar
+                              type: "line",  
+                              //type: "spline",     
+			                  lineThickness: 4,            //Defino Grosor de la linea principal
+			                  fillOpacity: .3,      
+                              yValueFormatString: "#,### °C",
+		                      indexLabel: "{y}",
+                              showInLegend: true,
+                              name: "Temperatura [°C]",
+                              lineDashType: "shortDot",  //Default: solid. solid,shortDash,shortDot,shortDashDot,shortDashDotDot,dot,dash,dashDot,longDash,longDashDot,longDashDotDot.
+                              markerType: "cross",      //none, circle, square, triangle and cross. Default: circle
+                              markerSize: 20,
+                              //ValueFormatString:        "DD MMM, YYYY",
+                              color: "#22aa77",
+                              lineColor: "red",
+                              dataPoints: data
+                              //dataPoints: datos
+                              /*  dataPoints: [{ label: x,  y: y  }] */
+                              /*  dataPoints: [
+                                            { label: "apple",  y: 10  },
+                                            { label: "orange", y: 15  },
+                                            { label: "banana", y: 25  },
+                                            { label: "mango",  y: 30  },
+                                            { label: "grape",  y: 28  }
+                                        ] */
+                            }
+                          ] 
+                });
+                chart.render();
+
+               /*  function toogleDataSeries(e){
+                if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                    e.dataSeries.visible = false;
+                } else{
+                    e.dataSeries.visible = true;
+                }
+                chart.render();
+                 } */
+
+            }
+        });
+    }
+    setInterval(mostrar,5000);
+    </script>
+</head>
+<body>
+
+    <h1 align='center'>Monitor de Temperatura Corporal del Paciente</h3><br>
+
+   <!--  <div id="chartContainer" style="width: 800px; height: 380px;"></div> -->
+    <div id="chartContainer"style="height: 500px;" ></div>
+
+</body>
+</html
