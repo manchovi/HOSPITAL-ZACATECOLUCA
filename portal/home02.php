@@ -88,12 +88,11 @@
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="info-box bg-light-green hover-expand-effect">
                         <div class="icon">
-                            <!-- <i class="material-icons">schedule</i> -->
-                            <img src="assets/img/1.png" height="80" width="80" alt="icono temperature" />
+                            <i class="material-icons">schedule</i>
                         </div>
                         <div class="content">
-                            <div class="text">Frecuencia Respiratoria</div>
-                            <div id="marco_frec_respiratoria" class="number count-to" data-from="0" data-to="243" data-speed="1000" data-fresh-interval="20">Loading...</div>
+                            <div class="text">Tiempo Sensado </div>
+                            <div class="number count-to" data-from="0" data-to="243" data-speed="1000" data-fresh-interval="20">5 Min.</div>
                         </div>
                     </div>
                 </div>
@@ -111,85 +110,9 @@
             </div>
             <!-- #END# Marcos 1 -->
 
-
-
-
+			<!-- Grafica # 1: Temperatura -->
             <div class="row clearfix">
-                <!-- Basic Examples -->
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <div class="card">
-                        <div class="header">
-                                                        
-                                <!-- <small>Separators are automatically added in CSS through <code>:before</code> and <code>content</code>.</small> -->
-                                <div class="align-left">
-                                    <div class="switch panel-switch-btn">
-                                        <span class="m-r-10 font-18">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Temperatura Corporal [°C]</strong> ~ <small>REAL TIME</small></span>
-                                        <label>OFF<input type="checkbox" id="realtime" checked><span class="lever switch-col-cyan"></span>ON</label>
-                                    </div>
-                                </div>
-                            
-                            <ul class="header-dropdown m-r--5">
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="material-icons">more_vert</i>
-                                    </a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="javascript:void(0);">Action</a></li>
-                                        <li><a href="javascript:void(0);">Another action</a></li>
-                                        <li><a href="javascript:void(0);">Something else here</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <!--BEGIN BODY-->
-                        <div class="body">
-                        <div id="chartContainer5" style="width: 100%; height: 65vh; background: #fff; border: 4px solid #555652; margin-top: 10px; text-align: center;" >Cargando datos. Espere un momento por favor.</div>
-                               <!--Begin Grafica-->
-                               <?php require_once ("data_tempe.php"); ?>
-                                <!--Fin Gráfica Línea-->
-                        </div>
-                        <!--END BODY-->
-                    </div>
-                </div>
-                <!-- #END# Basic Examples -->
-
-
-                <!-- With Icons -->
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <div class="card">
-                        <div class="header">
-                            <h2>
-                                Frecuencia Respiratoria
-                            </h2>
-                            <ul class="header-dropdown m-r--5">
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="material-icons">more_vert</i>
-                                    </a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="javascript:void(0);">Action</a></li>
-                                        <li><a href="javascript:void(0);">Another action</a></li>
-                                        <li><a href="javascript:void(0);">Something else here</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="body">
-                            <div id="chartContainer6" style="width: 100%; height: 65vh; background: #fff; border: 4px solid #555652; margin-top: 10px; text-align: center;" >Cargando datos. Espere un momento por favor.</div>
-                                <!--Begin Grafica-->
-                                <?php require_once ("data_frec_respiratoria.php"); ?>
-                                    <!--Fin Gráfica Línea-->
-                                
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- #END# With Icons -->
-       
-
-            <div class="row clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="card">
                         <div class="header">
                             <div class="row clearfix">
@@ -251,20 +174,13 @@
                                                 //console.log(data[5].y);
                                                 //console.log(data[data.length-1].y);
                                                 //var t_gc = data[data.length-1].y;                   //Estoy tomando el último registro.
-                                                var fecha = data[0].label;
                                                 var t_gc = data[0].y;                                 //Estoy tomando el primer valor encontrado de la temperatura.
                                                 var t_gf = (Number(t_gc * 1.8)+32.0).toFixed(2);
                                                 $("#tc_gc").html(t_gc + " °C");
                                                 //console.log("Tempe C: "+t_gc);
                                                 $("#tc_gf").html(t_gf + " °F");
                                                 //console.log("Tempe F: "+t_gf);
-                                                
-
-                                                //Imprimo datos en los recuadros inferiores del dashboard.
-                                                $("#temperatura_1").html(t_gc);
-                                                $("#temperatura1_2").html(t_gf);
-                                                $("#fh_my").html(fecha);
-
+                                            
                                                 //console.log(data.length);
                                                 //console.log(data);
 
@@ -371,7 +287,7 @@
                                             }
                                     });
                                 }
-                                setInterval(mostrar,1000);
+                                setInterval(mostrar,10000);
                                 </script>
                                 <!--Fin Gráfica Línea-->
                                </div> 
@@ -514,11 +430,6 @@
                                                 $("#marco_fc").html(marco_fcardia + "  PRbpm");
                                                 $("#marco_spo2").html(marco_sp + "  %");
 
-                                                //Imprimo datos en la parte inferior del dashboard.
-                                                $("#fc_1").html(marco_fcardia);
-                                                $("#spo2_1").html(marco_sp);
-
-
                                                 var chart = new CanvasJS.Chart("chartContainer2", {
                                                 theme: "dark1",                   // "light2", "dark1", "dark2"
                                                 animationEnabled: false,          // change to true		
@@ -628,7 +539,7 @@
                                             }
                                     });
                                 }
-                                setInterval(mostrar,1000);
+                                setInterval(mostrar,10000);
                                 </script>
                                 <!--Fin Gráfica Línea-->
                                </div> 
@@ -823,11 +734,6 @@
                                             //console.log("Tempe F: "+t_gf);
                                             //console.log(datoPoints);
 
-                                            //Imprimo los datos en la parte inferior del dashboard.
-                                            $("#systolic_1").html(marco_systolic);
-                                            $("#diastolic_1").html(marco_diastolic);
-                                            $("#heart_1").html(marco_pulsemin);
-
                                             var chart = new CanvasJS.Chart("chartContainer", {
                                             theme: "dark1",                   // "light2", "dark1", "dark2"
                                             animationEnabled: false,          // change to true		
@@ -938,7 +844,7 @@
                                     }
                                 });
                                 }
-                                setInterval(mostrar,1000);
+                                setInterval(mostrar,10000);
                                 </script>
                                 <!--Fin Gráfica Línea-->
 

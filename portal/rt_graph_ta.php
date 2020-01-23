@@ -16,15 +16,19 @@ include_once("conn.php");
         array("y" => 18000, "label" => "2014-15")
         ); */
 
-    $data_points = array();
+        //print_r($dataPoints);
+
+    $data_points = array(); 
     //$result = mysqli_query($con, "SELECT * FROM sales");
     $result = mysqli_query($conn, "SELECT * FROM `tb_sensores` ORDER BY id DESC LIMIT 5");
     while($row = mysqli_fetch_array($result)){
-        $point = array("y" => $row['temp_corporal'] , "label" => $row['fecha']);
+        //$point = array("ta_diastolic" => $row['ta_diastolic'] , "label" => $row['fecha']);  //Con esta línea me funciona bien para un dato pintado en el gráfico.
+        $point = array("ta_diastolic" => $row['ta_diastolic'] , "ta_systolic" => $row['ta_systolic'], "ta_pulse_min" => $row['ta_pulse_min'], "label" => $row['fecha']);
         array_push($data_points, $point);
     }
+
+    //print_r($data_points);
     echo json_encode($data_points, JSON_NUMERIC_CHECK);
-    //echo json_encode($data_points);
 
     //mysqli_close($conn);
 

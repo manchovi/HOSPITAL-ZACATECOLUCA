@@ -57,7 +57,7 @@
 		    ?>
 
 
-			 <!-- Marcos #1 -->
+			 <!-- Widgets #1 -->
 			 <div class="row clearfix">
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="info-box bg-pink hover-expand-effect">
@@ -88,12 +88,11 @@
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="info-box bg-light-green hover-expand-effect">
                         <div class="icon">
-                            <!-- <i class="material-icons">schedule</i> -->
-                            <img src="assets/img/1.png" height="80" width="80" alt="icono temperature" />
+                            <i class="material-icons">schedule</i>
                         </div>
                         <div class="content">
-                            <div class="text">Frecuencia Respiratoria</div>
-                            <div id="marco_frec_respiratoria" class="number count-to" data-from="0" data-to="243" data-speed="1000" data-fresh-interval="20">Loading...</div>
+                            <div class="text">Tiempo Sensado </div>
+                            <div class="number count-to" data-from="0" data-to="243" data-speed="1000" data-fresh-interval="20">5 Min.</div>
                         </div>
                     </div>
                 </div>
@@ -109,87 +108,13 @@
                     </div>
                 </div>
             </div>
-            <!-- #END# Marcos 1 -->
+            <!-- #END# Widgets -->
 
 
 
-
+			<!-- CPU Usage -->
             <div class="row clearfix">
-                <!-- Basic Examples -->
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <div class="card">
-                        <div class="header">
-                                                        
-                                <!-- <small>Separators are automatically added in CSS through <code>:before</code> and <code>content</code>.</small> -->
-                                <div class="align-left">
-                                    <div class="switch panel-switch-btn">
-                                        <span class="m-r-10 font-18">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Temperatura Corporal [°C]</strong> ~ <small>REAL TIME</small></span>
-                                        <label>OFF<input type="checkbox" id="realtime" checked><span class="lever switch-col-cyan"></span>ON</label>
-                                    </div>
-                                </div>
-                            
-                            <ul class="header-dropdown m-r--5">
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="material-icons">more_vert</i>
-                                    </a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="javascript:void(0);">Action</a></li>
-                                        <li><a href="javascript:void(0);">Another action</a></li>
-                                        <li><a href="javascript:void(0);">Something else here</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <!--BEGIN BODY-->
-                        <div class="body">
-                        <div id="chartContainer5" style="width: 100%; height: 65vh; background: #fff; border: 4px solid #555652; margin-top: 10px; text-align: center;" >Cargando datos. Espere un momento por favor.</div>
-                               <!--Begin Grafica-->
-                               <?php require_once ("data_tempe.php"); ?>
-                                <!--Fin Gráfica Línea-->
-                        </div>
-                        <!--END BODY-->
-                    </div>
-                </div>
-                <!-- #END# Basic Examples -->
-
-
-                <!-- With Icons -->
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <div class="card">
-                        <div class="header">
-                            <h2>
-                                Frecuencia Respiratoria
-                            </h2>
-                            <ul class="header-dropdown m-r--5">
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="material-icons">more_vert</i>
-                                    </a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="javascript:void(0);">Action</a></li>
-                                        <li><a href="javascript:void(0);">Another action</a></li>
-                                        <li><a href="javascript:void(0);">Something else here</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="body">
-                            <div id="chartContainer6" style="width: 100%; height: 65vh; background: #fff; border: 4px solid #555652; margin-top: 10px; text-align: center;" >Cargando datos. Espere un momento por favor.</div>
-                                <!--Begin Grafica-->
-                                <?php require_once ("data_frec_respiratoria.php"); ?>
-                                    <!--Fin Gráfica Línea-->
-                                
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- #END# With Icons -->
-       
-
-            <div class="row clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="card">
                         <div class="header">
                             <div class="row clearfix">
@@ -222,13 +147,316 @@
                             <!-- div id="real_time_chart" class="dashboard-flot-chart"> -->
                             <div class="row">
 				            <div class="col-xs-12" > 
+                                <!-- Acá pondré una gráfica -->
 
-                            <?php  
-                            ?>
+                                <?php
+                                    /* include_once("conn.php"); */
+                                    //include_once("./rt_graph_temp1.php");
+                                ?>
+
+                               
+                                <!-- <canvas id="chartContainer" style="width: 100%; height: 65vh; background: #fff; border: 4px solid #555652; margin-top: 10px;"></canvas> -->
+                                <!--Inicio Gráfica Línea-->
+
+                                <div id="chartContainer" style="width: 100%; height: 65vh; background: #fff; border: 4px solid #555652; margin-top: 10px;" ></div>
+                                <script type="text/javascript">
+                                    function mostrar(){
+                                        $.ajax({
+                                            //type:"GET",
+                                            url:"./rt_graph_temp1.php",
+                                            //dataType: 'html',
+                                            dataType: 'json',
+                                            contentType: "application/json; charset=utf-8",
+                                            method: "GET",
+                                            success:function(data){
+                                                //var datos = JSON.parse(data)
+                                                var tempe = [];
+                                                var fecha = [];
+                                                var arrayTempe = [];
+
+                                                //var x = eval('(' + data + ')');
+                                                //var types = JSON.parse(data);
+                                                //console.log("Type: "+types);
+
+                                                //var a = x.y;
+                                                //console.log("Andale: "+a);
+
+                                                for(var i=0;i<data.length;i++){
+                                                //for (var i in data) {
+                                                        tempe.push(data[i].y);
+                                                        fecha.push(data[i].label);
+                                                        //arrayTempe.push("{y: "+data[i].y , "label: " +data[i].label+"}");
+                                                        //arrayTempe.push("{y: "+data[i].y , "label: " + data[i].label.toString() +"}");
+                                                        //arrayTempe.push(tempe , fecha);
+                                                        arrayTempe.push("y: ", data[i].y , "label: ", data[i].label);
+                                                    }
+
+                                                //var jsonArrayTempe1 = JSON.parse(JSON.stringify(Object.assign({},arrayTempe)));
+                                                //var jsonArrayTempe1 = JSON.parse(JSON.stringify(arrayTempe));
+                                                //var jsonArrayTempe1 = JSON.stringify(arrayTempe);
+                                                var jsonArrayTempe1 = JSON.stringify(arrayTempe);
+                                                console.log("array tempe custuuu: " +jsonArrayTempe1);
+
+                                                //Generando JSON a partir de array javascript obteniendo los datos desde un fichero php
+                                                //var jsonArrayTempe = JSON.parse(JSON.stringify(tempe));
+                                                var jsonArrayTempe = JSON.stringify(Object.assign({}, tempe)); 
+
+                                                //console.log(JSON.stringify({ x: 5, y: 6 }));
+                                                console.log(JSON.stringify({ y: tempe, label: fecha}));
+                                                /*
+                                                [
+                                                    {
+                                                    "y": 54,
+                                                    "label": "2019-12-07"
+                                                    },
+                                                    {
+                                                    "y": 127,
+                                                    "label": "2019-12-08"
+                                                    },
+                                                    {
+                                                    "y": 366,
+                                                    "label": "2019-12-09"
+                                                    }
+                                                ]
+                                                */
+
+                                                //alert(tempe);
+                                                //console.log("array tempe: " +tempe);
+                                                //console.log("JSON tempe: " +jsonArrayTempe);
+                                                //console.log("array fecha: " +fecha);
+
+
+                                                //console.log(data[5].y);
+                                                //console.log(data[data.length-1].y);
+                                                //var t_gc = data[data.length-1].y;                   //Estoy tomando el último registro.
+                                                var t_gc = data[0].y;                                 //Estoy tomando el primer valor encontrado de la temperatura.
+                                                var t_gf = (Number(t_gc * 1.8)+32.0).toFixed(2);
+                                                $("#tc_gc").html(t_gc + " °C");
+                                                console.log("Tempe C: "+t_gc);
+                                                $("#tc_gf").html(t_gf + " °F");
+                                                console.log("Tempe F: "+t_gf);
+                                            
+                                                //console.log(data.length);
+                                                //console.log(data);
+
+                                                var chart = new CanvasJS.Chart("chartContainer", {
+                                                theme: "light1",                   // "light2", "dark1", "dark2"
+                                                animationEnabled: false,          // change to true		
+                                                zoomEnabled: true,
+                                                title:{
+                                                    text: "Temperatura [°C]",
+                                                    //color: "yellow",
+                                                    fontSize: 20
+                                                    //margin: 25
+                                                },
+                                                subtitles: [{
+                                                            text: "Paciente XXXX000",
+                                                            fontSize: 16,
+                                                            margin: 20
+                                                        }],
+                                                axisX: {
+                                                    interval: 25,          //Esta propiedad la probaré luego.
+                                                    title: "X-Axis",
+                                                    //titleFontColor: "yellow",
+                                                    titleFontSize: 20,
+                                                    crosshair: {
+                                                                enabled: true,
+                                                                snapToDataPoint: true
+                                                                }
+                                                },
+                                                axisY: {
+                                                        title: "Temperature [°C]",
+                                                        //titleFontColor: "yellow",
+                                                        titleFontSize: 20,
+                                                        logarithmic: false, //change it to true
+                                                        lineColor: "#51CDA0",
+                                                        gridThickness: 1,                     //Juego con los border del grafico. La cuadricula
+                                                        lineThickness: 1,                     //Juego con los border del grafico. La cuadricula
+                                                        suffix: " °C",
+                                                        crosshair: {
+                                                        enabled: true
+                                                    }
+                                                },
+                                                toolTip:{
+                                                            shared:true
+                                                        },  
+                                                legend:{
+                                                        cursor:"pointer",
+                                                        verticalAlign: "top",
+                                                        fontSize: 16,
+                                                        horizontalAlign: "left",
+                                                        dockInsidePlotArea: true,
+                                                        //itemclick: toogleDataSeries
+                                                    },
+                                                /*data: [
+                                                    {
+                                                        dataPoints: datos
+                                                    }
+                                                ]*/
+                                                data: [
+                                                        {
+                                                        //type: "line",  //line, stackedBar, stackedBar
+                                                        type: "line",  
+                                                        //type: "spline",     
+                                                        lineThickness: 4,            //Defino Grosor de la linea principal
+                                                        fillOpacity: .3,      
+                                                        yValueFormatString: "#,### °C",
+                                                        indexLabel: "{y}",
+                                                        showInLegend: true,
+                                                        name: "Temperatura [°C]",
+                                                        lineDashType: "shortDot",  //Default: solid. solid,shortDash,shortDot,shortDashDot,shortDashDotDot,dot,dash,dashDot,longDash,longDashDot,longDashDotDot.
+                                                        markerType: "cross",      //none, circle, square, triangle and cross. Default: circle
+                                                        markerSize: 20,
+                                                        //ValueFormatString:        "DD MMM, YYYY",
+                                                        color: "#22aa77",
+                                                        lineColor: "red",
+                                                        dataPoints: [jsonArrayTempe1]
+                                                        //dataPoints: data
+                                                        //dataPoints: datos
+                                                        /*  dataPoints: [{ label: x,  y: y  }] */
+                                                        /*  dataPoints: [
+                                                                        { label: "apple",  y: 10  },
+                                                                        { label: "orange", y: 15  },
+                                                                        { label: "banana", y: 25  },
+                                                                        { label: "mango",  y: 30  },
+                                                                        { label: "grape",  y: 28  }
+                                                                    ] */
+                                                        }
+                                                    ] 
+                                            });
+                                            chart.render();
+
+                                        /*  function toogleDataSeries(e){
+                                            if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                                                e.dataSeries.visible = false;
+                                            } else{
+                                                e.dataSeries.visible = true;
+                                            }
+                                            chart.render();
+                                            } */
+
+                                        },
+                                            error: function(data) {
+                                                console.log(data);
+                                            }
+                                    });
+                                }
+                                setInterval(mostrar,5000);
+                                </script>
+                                <!--Fin Gráfica Línea-->
+                               </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# CPU Usage -->
+
+
+            <!-- Widgets # 2 -->
+             <!-- Hover Zoom Effect -->
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box bg-pink hover-zoom-effect">
+                        <div class="icon">
+                            <!-- <i class="material-icons">email</i> -->
+                            <img src="assets/img/10.png" height="80" width="80" alt="Systolic" />
+                        </div>
+                        <div class="content">
+                            <div class="text">Systolic ~ [mmHg]</div>
+                            <div id="systolic" class="number">0</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box bg-blue hover-zoom-effect">
+                        <div class="icon">
+                            <!-- <i class="material-icons">devices</i> -->
+                            <img src="assets/img/10.png" height="80" width="80" alt="Diastolic" />
+                        </div>
+                        <div class="content">
+                            <div class="text">Diastolic ~ [mmHg]</div>
+                            <div id="diastolic" class="number">0</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box bg-cyan hover-zoom-effect">
+                        <div class="icon">
+                            <!-- <i class="material-icons">gps_fixed</i> -->
+                            <img src="assets/img/10.png" height="80" width="80" alt="Diastolic" />
+                        </div>
+                        <div class="content">
+                            <div class="text">Heart Rate ~ [bmp]</div>
+                            <div id="heart" class="number">0</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box bg-light-blue hover-zoom-effect">
+                        <div class="icon">
+                            <!-- <i class="material-icons">access_alarm</i> -->
+
+                        </div>
+                        <div class="content">
+                            <div class="text">ALARM</div>
+                            <div class="number">07:00 AM</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Hover Zoom Effect -->
+            <!-- #END# Widgets2 -->
+
+
+            <!-- CPU Usage 2-->
+            <div class="row clearfix">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <div class="row clearfix">
+                                <div class="col-xs-12 col-sm-6">
+                                    <h2>MONITOR TENSIÓN / PRESIÓN ARTERIAL</h2>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 align-right">
+                                    <div class="switch panel-switch-btn">
+                                        <span class="m-r-10 font-12">REAL TIME</span>
+                                        <label>OFF<input type="checkbox" id="realtime" checked><span class="lever switch-col-cyan"></span>ON</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="header-dropdown m-r--5">
+                                <li class="dropdown">
+                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="material-icons">more_vert</i>
+                                    </a>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li><a href="javascript:void(0);">Action</a></li>
+                                        <li><a href="javascript:void(0);">Another action</a></li>
+                                        <li><a href="javascript:void(0);">Something else here</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+
+
+                        <div class="body">
+                            <!-- div id="real_time_chart" class="dashboard-flot-chart"> -->
+                            <div class="row">
+				            <div class="col-xs-12" > 
+                                <!-- Acá pondré una gráfica -->
+
+                                <?php
+                                
+                                ?>
+
                                 
                                <!--  <canvas id="line_chart1" style="width: 100%; height: 65vh; background: #fff; border: 4px solid #555652; margin-top: 10px;"></canvas> -->                             
                                 <!--Inicio Gráfica Línea-->
-                                <div id="chartContainer1" style="width: 100%; height: 65vh; background: #fff; border: 4px solid #555652; margin-top: 10px; text-align: center;" >Cargando datos. Espere un momento por favor.</div>
+                                <div id="chartContainer1" style="width: 100%; height: 65vh; background: #fff; border: 4px solid #555652; margin-top: 10px;" ></div>
                                 <script type="text/javascript">
                                     function mostrar(){
                                         $.ajax({
@@ -251,29 +479,20 @@
                                                 //console.log(data[5].y);
                                                 //console.log(data[data.length-1].y);
                                                 //var t_gc = data[data.length-1].y;                   //Estoy tomando el último registro.
-                                                var fecha = data[0].label;
                                                 var t_gc = data[0].y;                                 //Estoy tomando el primer valor encontrado de la temperatura.
                                                 var t_gf = (Number(t_gc * 1.8)+32.0).toFixed(2);
                                                 $("#tc_gc").html(t_gc + " °C");
-                                                //console.log("Tempe C: "+t_gc);
+                                                console.log("Tempe C: "+t_gc);
                                                 $("#tc_gf").html(t_gf + " °F");
-                                                //console.log("Tempe F: "+t_gf);
-                                                
-
-                                                //Imprimo datos en los recuadros inferiores del dashboard.
-                                                $("#temperatura_1").html(t_gc);
-                                                $("#temperatura1_2").html(t_gf);
-                                                $("#fh_my").html(fecha);
-
+                                                console.log("Tempe F: "+t_gf);
+                                            
                                                 //console.log(data.length);
                                                 //console.log(data);
 
                                                 var chart = new CanvasJS.Chart("chartContainer1", {
-                                                theme: "dark1",                   // "light2", "dark1", "dark2"
+                                                theme: "light1",                   // "light2", "dark1", "dark2"
                                                 animationEnabled: false,          // change to true		
                                                 zoomEnabled: true,
-                                                exportFileName: "TemperaturaCorporal",
-                                                exportEnabled: true,
                                                 title:{
                                                     text: "Temperatura [°C]",
                                                     //color: "yellow",
@@ -281,7 +500,7 @@
                                                     //margin: 25
                                                 },
                                                 subtitles: [{
-                                                            text: "Paciente xxx000",
+                                                            text: "Paciente XXXX000",
                                                             fontSize: 16,
                                                             margin: 20
                                                         }],
@@ -370,573 +589,6 @@
                                                 console.log(data);
                                             }
                                     });
-                                }
-                                setInterval(mostrar,1000);
-                                </script>
-                                <!--Fin Gráfica Línea-->
-                               </div> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- #END# Grafica # 1: Temperatura -->
-
-
-
-
-
-
-
-            <!-- Marcos #1 -->
-			 <div class="row clearfix">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-10">
-                    <div class="info-box bg-pink hover-expand-effect">
-                        <div class="icon">
-                            <!-- <i class="material-icons">playlist_add_check</i> -->
-                            <img src="assets/img/2.png" height="80" width="80" alt="icono spo2" />
-                        </div>
-                        <div class="content">
-                            <div class="text">Frecuencia Cardiaca</div>
-                            <!-- <div id="marco_fc" class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20">0  PRbpm</div> -->
-                            <div id="marco_fc" class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20">Loading...</div>
-                            <!-- <div id="fh_spo2" style= "font-size: 5px;">/div> -->
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-10">
-                    <div class="info-box bg-cyan hover-expand-effect">
-                        <div class="icon">
-                            <!-- <i class="material-icons">help</i> -->
-                            <img src="assets/img/9.png" height="80" width="80" alt="icono spo2" />
-                        </div>
-                        <div class="content">
-                            <div class="text">SpO2</div>
-                            <!-- <div id="marco_spo2" class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20">0 %</div> -->
-                            <div id="marco_spo2" class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20">Loading...</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box bg-light-green hover-expand-effect">
-                        <div class="icon">
-                            <i class="material-icons">schedule</i>
-                        </div>
-                        <div class="content">
-                            <div class="text">NA </div>
-                            <div class="number count-to" data-from="0" data-to="243" data-speed="1000" data-fresh-interval="20">5 Min.</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box bg-orange hover-expand-effect">
-                        <div class="icon">
-                            <i class="material-icons">person_add</i>
-                        </div>
-                        <div class="content">
-                            <div class="text">NA1</div>
-                            <div class="number count-to" data-from="0" data-to="1225" data-speed="1000" data-fresh-interval="20">1</div>
-                        </div>
-                    </div>
-                </div> -->
-
-            </div>
-            <!-- #END# Marcos 1 -->
-
-
-			<!-- Grafica # 2: Oximetria -->
-            <div class="row clearfix">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="card">
-                        <div class="header">
-                            <div class="row clearfix">
-                                <div class="col-xs-12 col-sm-6">
-                                    <h2>Monitor de Variable Biométrica: Oximetría</h2>
-                                </div>
-                                <div class="col-xs-12 col-sm-6 align-right">
-                                    <div class="switch panel-switch-btn">
-                                        <span class="m-r-10 font-12">REAL TIME</span>
-                                        <label>OFF<input type="checkbox" id="realtime" checked><span class="lever switch-col-cyan"></span>ON</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <ul class="header-dropdown m-r--5">
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="material-icons">more_vert</i>
-                                    </a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="javascript:void(0);">Action</a></li>
-                                        <li><a href="javascript:void(0);">Another action</a></li>
-                                        <li><a href="javascript:void(0);">Something else here</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-
-
-                        <div class="body">
-                            <!-- div id="real_time_chart" class="dashboard-flot-chart"> -->
-                            <div class="row">
-				            <div class="col-xs-12" > 
-
-                            <?php  
-                            ?>
-                                
-                               <!--  <canvas id="line_chart1" style="width: 100%; height: 65vh; background: #fff; border: 4px solid #555652; margin-top: 10px;"></canvas> -->                             
-                                <!--Inicio Gráfica Línea-->
-                                <div id="chartContainer2" style="width: 100%; height: 65vh; background: #fff; border: 4px solid #555652; margin-top: 10px; text-align: center;" >Cargando datos. Espere un momento por favor.</div>
-                                <script type="text/javascript">
-                                    function mostrar(){
-                                        $.ajax({
-                                            //type:"GET",
-                                            url:"./rt_graph_oximetria.php",
-                                            //dataType: 'html',
-                                            dataType: 'json',
-                                            contentType: "application/json; charset=utf-8",
-                                            method: "GET",
-                                            success:function(data){
-                                                var dataPoints_frecardiaca = [];
-                                                var dataPoints_spo2 = [];
-                                                //var datos = JSON.parse(data)
-                                                for(var i=0;i<data.length;i++){
-                                                //for (var i in data) {
-                                                        dataPoints_frecardiaca.push({label: data[i].label, y: data[i].frec_cardiaca});  
-                                                        dataPoints_spo2.push({label: data[i].label, y: data[i].spo2});     
-                                                    }
-
-                                                var marco_fcardia = data[0].frec_cardiaca;                                 //Estoy tomando el primer valor encontrado de la temperatura.
-                                                var marco_sp = data[0].spo2;
-                                                
-                                                $("#marco_fc").html(marco_fcardia + "  PRbpm");
-                                                $("#marco_spo2").html(marco_sp + "  %");
-
-                                                //Imprimo datos en la parte inferior del dashboard.
-                                                $("#fc_1").html(marco_fcardia);
-                                                $("#spo2_1").html(marco_sp);
-
-
-                                                var chart = new CanvasJS.Chart("chartContainer2", {
-                                                theme: "dark1",                   // "light2", "dark1", "dark2"
-                                                animationEnabled: false,          // change to true		
-                                                zoomEnabled: true,
-                                                exportFileName: "Oximetria_graph",
-                                                exportEnabled: true,
-                                                title:{
-                                                    text: "Oximetría",
-                                                    //color: "yellow",
-                                                    fontSize: 20
-                                                    //margin: 25
-                                                },
-                                                subtitles: [{
-                                                            text: "Paciente xxx000",
-                                                            fontSize: 16,
-                                                            margin: 20
-                                                        }],
-                                                axisX: {
-                                                    interval: 25,          //Esta propiedad la probaré luego.
-                                                    title: "X-Axis",
-                                                    //titleFontColor: "yellow",
-                                                    titleFontSize: 20,
-                                                    crosshair: {
-                                                                enabled: true,
-                                                                snapToDataPoint: true
-                                                                }
-                                                },
-                                                axisY: {
-                                                        title: "Y-Axis ~ [Dato]",
-                                                        //titleFontColor: "yellow",
-                                                        titleFontSize: 20,
-                                                        logarithmic: false, //change it to true
-                                                        lineColor: "#51CDA0",
-                                                        gridThickness: 1,                     //Juego con los border del grafico. La cuadricula
-                                                        lineThickness: 1,                     //Juego con los border del grafico. La cuadricula
-                                                        //suffix: " °C",
-                                                        crosshair: {
-                                                        enabled: true
-                                                    }
-                                                },
-                                                toolTip:{
-                                                            shared:true
-                                                        },  
-                                                legend:{
-                                                        cursor:"pointer",
-                                                        verticalAlign: "bottom",
-                                                        fontSize: 16,
-                                                        horizontalAlign: "center",
-                                                        dockInsidePlotArea: false,
-                                                        //itemclick: toogleDataSeries
-                                                    },
-                                                /*data: [
-                                                    {
-                                                        dataPoints: datos
-                                                    }
-                                                ]*/
-                                                data: [
-                                                        {
-                                                        //type: "line",  //line, stackedBar, stackedBar
-                                                        type: "line",  
-                                                        //type: "spline",     
-                                                        lineThickness: 4,            //Defino Grosor de la linea principal
-                                                        fillOpacity: .3,      
-                                                        //yValueFormatString: "#,### °C",
-                                                        indexLabel: "{y} PRbpm",
-                                                        showInLegend: true,
-                                                        name: "Frec. Cardiaca",
-                                                        lineDashType: "shortDot",  //Default: solid. solid,shortDash,shortDot,shortDashDot,shortDashDotDot,dot,dash,dashDot,longDash,longDashDot,longDashDotDot.
-                                                        markerType: "cross",      //none, circle, square, triangle and cross. Default: circle
-                                                        markerSize: 20,
-                                                        //ValueFormatString:        "DD MMM, YYYY",
-                                                        color: "#22aa77",
-                                                        lineColor: "red",
-                                                        dataPoints: dataPoints_frecardiaca
-                                                        },
-                                                        {
-                                                        type: "line",
-                                                        lineThickness: 4,                           //Defino Grosor de la linea principal
-                                                        fillOpacity: .3,      
-                                                        //yValueFormatString: "#,### °C",
-                                                        indexLabel: "{y} %",
-                                                        showInLegend: true,
-                                                        name: "SpO2",
-                                                        lineDashType: "shortDot",                    //Default: solid. solid,shortDash,shortDot,shortDashDot,shortDashDotDot,dot,dash,dashDot,longDash,longDashDot,longDashDotDot.
-                                                        markerType: "cross",                         //none, circle, square, triangle and cross. Default: circle
-                                                        markerSize: 20,
-                                                        color: "#22aa77",
-                                                        lineColor: "red",
-                                                        dataPoints: dataPoints_spo2
-                                                        }
-                                                    ] 
-                                            });
-                                            chart.render();
-
-                                        /*  function toogleDataSeries(e){
-                                            if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-                                                e.dataSeries.visible = false;
-                                            } else{
-                                                e.dataSeries.visible = true;
-                                            }
-                                            chart.render();
-                                            } */
-
-                                        },
-                                            error: function(data) {
-                                                console.log(data);
-                                            }
-                                    });
-                                }
-                                setInterval(mostrar,1000);
-                                </script>
-                                <!--Fin Gráfica Línea-->
-                               </div> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- #END# Grafica # 2: Oximetria -->
-
-
-
-
-
-
-
-            <!-- Widgets # 2 -->
-             <!-- Hover Zoom Effect -->
-            <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box bg-pink hover-zoom-effect">
-                        <div class="icon">
-                            <!-- <i class="material-icons">email</i> -->
-                            <img src="assets/img/10.png" height="80" width="80" alt="Systolic" />
-                        </div>
-                        <div class="content">
-                            <div class="text">Systolic ~ [mmHg]</div>
-                            <div id="marco_systolic" class="number">0</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box bg-blue hover-zoom-effect">
-                        <div class="icon">
-                            <!-- <i class="material-icons">devices</i> -->
-                            <img src="assets/img/10.png" height="80" width="80" alt="Diastolic" />
-                        </div>
-                        <div class="content">
-                            <div class="text">Diastolic ~ [mmHg]</div>
-                            <div id="marco_diastolic" class="number">0</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box bg-cyan hover-zoom-effect">
-                        <div class="icon">
-                            <!-- <i class="material-icons">gps_fixed</i> -->
-                            <img src="assets/img/10.png" height="80" width="80" alt="Diastolic" />
-                        </div>
-                        <div class="content">
-                            <div class="text">Heart Rate ~ [bmp]</div>
-                            <div id="marco_pulsemin" class="number">0</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box bg-light-blue hover-zoom-effect">
-                        <div class="icon">
-                            <!-- <i class="material-icons">access_alarm</i> -->
-
-                        </div>
-                        <div class="content">
-                            <div class="text">ALARM</div>
-                            <div class="number">07:00 AM</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- #END# Hover Zoom Effect -->
-            <!-- #END# Widgets2 -->
-
-
-            <!-- CPU Usage 2-->
-            <div class="row clearfix">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="card">
-                        <div class="header">
-                            <div class="row clearfix">
-                                <div class="col-xs-12 col-sm-6">
-                                    <h2>MONITOR TENSIÓN / PRESIÓN ARTERIAL</h2>
-                                </div>
-                                <div class="col-xs-12 col-sm-6 align-right">
-                                    <div class="switch panel-switch-btn">
-                                        <span class="m-r-10 font-12">REAL TIME</span>
-                                        <label>OFF<input type="checkbox" id="realtime" checked><span class="lever switch-col-cyan"></span>ON</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <ul class="header-dropdown m-r--5">
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="material-icons">more_vert</i>
-                                    </a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="javascript:void(0);">Action</a></li>
-                                        <li><a href="javascript:void(0);">Another action</a></li>
-                                        <li><a href="javascript:void(0);">Something else here</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-
-
-                        <div class="body">
-                            <!-- div id="real_time_chart" class="dashboard-flot-chart"> -->
-                            <div class="row">
-				            <div class="col-xs-12" > 
-                                <!-- Acá pondré una gráfica -->
-
-                                    <!-- Acá pondré una gráfica -->
-                                <?php
-
-                                //header('Content-Type: application/json');
-                                /*  include_once("conn.php");
-                                $data_points1 = array(); 
-                                $data_points2 = array(); 
-                                $data_points3 = array(); 
-                                //$result = mysqli_query($conn, "SELECT ta_diastolic, fecha from `tb_sensores` ORDER BY id DESC LIMIT 5");
-                                $result = mysqli_query($conn, "SELECT * from `tb_sensores` ORDER BY id DESC LIMIT 5");
-                                while($row = mysqli_fetch_array($result)){
-                                $point = array("y" => $row['ta_diastolic'] , "label" => $row['fecha']);
-                                array_push($data_points1, $point);
-                                $point1 = array("y" => $row['ta_systolic'] , "label" => $row['fecha']);
-                                array_push($data_points2, $point1);
-                                $point2 = array("y" => $row['ta_pulse_min'] , "label" => $row['fecha']);
-                                array_push($data_points3, $point2);
-                                } */
-                                //print_r($data_points1);        //Imprimir arreglo php
-
-
-                                /* 
-                                $query = "select * from datapoints";
-                                $data = mysqli_query($conn, $query);
-                                $dataPoints = array();
-                                while ($row = mysqli_fetch_array($data, MYSQL_ASSOC)) {
-                                    array_push($dataPoints, $row);
-                                }
-                                */
-                                $hora = date("H:i:s a");
-
-                                ?>
-
-
-                                <!-- <canvas id="chartContainer" style="width: 100%; height: 65vh; background: #fff; border: 4px solid #555652; margin-top: 10px;"></canvas> -->
-                                <!--Inicio Gráfica Línea-->
-                                <div id="chartContainer" style="width: 100%; height: 65vh; background: #fff; border: 4px solid #555652; margin-top: 10px;" ></div>
-                                <script type="text/javascript">
-                                function mostrar(){
-                                    $.ajax({
-                                        //type:"GET",
-                                        url:"./rt_graph_ta.php",
-                                        //dataType: 'html',
-                                        dataType: 'json',
-                                        contentType: "application/json; charset=utf-8",
-                                        method: "GET",
-                                        success:function(data){
-                                            var dataPoints_diastolic = [];
-                                            var dataPoints_systolic = [];
-                                            var dataPoints_pulsemin = [];
-                                            /*
-                                            $.each(data, function(key, value){
-                                                dataPoints.push({x: value[0], y: value[1]});    
-                                            }); */
-                                            //var datos = JSON.parse(data)
-                                            var tempe = [];
-                                            var fecha = [];
-                                            for(var i=0;i<data.length;i++){
-                                            //for (var i in data) {
-                                                    //tempe.push(data[i].temp_corporal);
-                                                    //fecha.push(data[i].fecha);
-                                                    //console.log("Diastolic: "+data[i].ta_diastolic);
-                                                    //console.log("Fecha: "+data[i].label);
-                                                    //dataPoints.push({x: data[i].label, y: data[i].ta_diastolic});
-                                                    dataPoints_diastolic.push({label: data[i].label, y: data[i].ta_diastolic});  
-                                                    dataPoints_systolic.push({label: data[i].label, y: data[i].ta_systolic});      
-                                                    dataPoints_pulsemin.push({label: data[i].label, y: data[i].ta_pulse_min});            
-                                                }
-
-                                            //console.log(data[5].y);
-                                            //console.log(data[data.length-1].y);
-                                            //var t_gc = data[data.length-1].y;                   //Estoy tomando el último registro.
-                                            var marco_diastolic = data[0].ta_diastolic;                                 //Estoy tomando el primer valor encontrado de la temperatura.
-                                            var marco_systolic = data[0].ta_systolic;
-                                            var marco_pulsemin = data[0].ta_pulse_min;
-                                            
-                                            $("#marco_diastolic").html(marco_diastolic + "  mmHg");
-                                            $("#marco_systolic").html(marco_systolic + "  mmHg");
-                                            $("#marco_pulsemin").html(marco_pulsemin + "  bpm");
-                                            //console.log("Tempe F: "+t_gf);
-                                            //console.log(datoPoints);
-
-                                            //Imprimo los datos en la parte inferior del dashboard.
-                                            $("#systolic_1").html(marco_systolic);
-                                            $("#diastolic_1").html(marco_diastolic);
-                                            $("#heart_1").html(marco_pulsemin);
-
-                                            var chart = new CanvasJS.Chart("chartContainer", {
-                                            theme: "dark1",                   // "light2", "dark1", "dark2"
-                                            animationEnabled: false,          // change to true		
-                                            zoomEnabled: true,
-                                            exportFileName: "Tensión_Arterial",
-                                            exportEnabled: true,
-                                            title:{
-                                                text: "Lecturas de variable fisiológica de la Tensión Arterial",
-                                                //color: "yellow",
-                                                fontSize: 20
-                                                //margin: 25
-                                            },
-                                            subtitles: [{
-                                                        text: "Paciente xxx000",
-                                                        fontSize: 16,
-                                                        margin: 20
-                                                        
-                                                    }],
-                                            axisX: {
-                                                interval: 25,          //Esta propiedad la probaré luego.
-                                                title: "X-Axis - [Fecha]",
-                                                //titleFontColor: "yellow",
-                                                titleFontSize: 20,
-                                                crosshair: {
-                                                            enabled: true,
-                                                            snapToDataPoint: true
-                                                            }
-                                            },
-                                            axisY: {
-                                                    title: "Y-Axis ~ [Dato]",
-                                                    //titleFontColor: "yellow",
-                                                    titleFontSize: 20,
-                                                    logarithmic: false, //change it to true
-                                                    lineColor: "#51CDA0",
-                                                    gridThickness: 1,                     //Juego con los border del grafico. La cuadricula
-                                                    lineThickness: 1,                     //Juego con los border del grafico. La cuadricula
-                                                    //suffix: " °C",
-                                                    crosshair: {
-                                                                    enabled: true
-                                                                }
-                                            },
-                                            toolTip:{
-                                                        shared:true
-                                                    },  
-                                            legend:{
-                                                    cursor:"pointer",
-                                                    verticalAlign: "top",
-                                                    fontSize: 16,
-                                                    horizontalAlign: "right",
-                                                    dockInsidePlotArea: false,
-                                                    //itemclick: toogleDataSeries
-                                                },
-                                            data: [
-                                                    {
-                                                    //type: "line",  //line, stackedBar, stackedBar
-                                                    type: "line",  
-                                                    //type: "spline",     
-                                                    lineThickness: 4,            //Defino Grosor de la linea principal
-                                                    fillOpacity: .3,      
-                                                    //yValueFormatString: "#,### °C",
-                                                    indexLabel: "{y} mmHg",
-                                                    showInLegend: true,
-                                                    name: "Diastolic~[mmHg]",
-                                                    lineDashType: "shortDot",  //Default: solid. solid,shortDash,shortDot,shortDashDot,shortDashDotDot,dot,dash,dashDot,longDash,longDashDot,longDashDotDot.
-                                                    markerType: "cross",      //none, circle, square, triangle and cross. Default: circle
-                                                    markerSize: 20,
-                                                    //ValueFormatString:        "DD MMM, YYYY",
-                                                    color: "#22aa77",
-                                                    lineColor: "red",
-                                                    dataPoints: dataPoints_diastolic
-                                                    },
-                                                    {
-                                                    type: "line",
-                                                    lineThickness: 4,                           //Defino Grosor de la linea principal
-                                                    fillOpacity: .3,      
-                                                    //yValueFormatString: "#,### °C",
-                                                    indexLabel: "{y} mmHg",
-                                                    showInLegend: true,
-                                                    name: "Systolic~[mmHg]",
-                                                    lineDashType: "shortDot",                    //Default: solid. solid,shortDash,shortDot,shortDashDot,shortDashDotDot,dot,dash,dashDot,longDash,longDashDot,longDashDotDot.
-                                                    markerType: "cross",                         //none, circle, square, triangle and cross. Default: circle
-                                                    markerSize: 20,
-                                                    color: "#22aa77",
-                                                    lineColor: "red",
-                                                    dataPoints: dataPoints_systolic
-                                                    },
-                                                    {
-                                                    type: "line",
-                                                    lineThickness: 4,                           //Defino Grosor de la linea principal
-                                                    fillOpacity: .3,      
-                                                    //yValueFormatString: "#,### °C",
-                                                    indexLabel: "{y} bpm",
-                                                    showInLegend: true,
-                                                    name: "Pulse min~[bpm]",
-                                                    lineDashType: "shortDot",                    //Default: solid. solid,shortDash,shortDot,shortDashDot,shortDashDotDot,dot,dash,dashDot,longDash,longDashDot,longDashDotDot.
-                                                    markerType: "cross",                         //none, circle, square, triangle and cross. Default: circle
-                                                    markerSize: 20,
-                                                    color: "#22aa77",
-                                                    lineColor: "red",
-                                                    dataPoints: dataPoints_pulsemin
-                                                    }
-                                                    ] 
-                                        });
-                                        chart.render();
-                                    },
-                                    error: function(data) {
-                                        console.log(data);
-                                    }
-                                });
                                 }
                                 setInterval(mostrar,1000);
                                 </script>

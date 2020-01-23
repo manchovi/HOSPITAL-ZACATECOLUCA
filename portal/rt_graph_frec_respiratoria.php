@@ -18,9 +18,10 @@ include_once("conn.php");
 
     $data_points = array();
     //$result = mysqli_query($con, "SELECT * FROM sales");
-    $result = mysqli_query($conn, "SELECT * FROM `tb_sensores` ORDER BY id DESC LIMIT 5");
+    //$result = mysqli_query($conn, "SELECT * FROM `tb_sensores` ORDER BY id DESC LIMIT 5");
+    $result = mysqli_query($conn, "SELECT frec_respiratoria, fecha FROM `tb_sensores` ORDER BY id DESC LIMIT 10");
     while($row = mysqli_fetch_array($result)){
-        $point = array("y" => $row['temp_corporal'] , "label" => $row['fecha']);
+        $point = array("y" => $row['frec_respiratoria'] , "label" => $row['fecha']);
         array_push($data_points, $point);
     }
     echo json_encode($data_points, JSON_NUMERIC_CHECK);
